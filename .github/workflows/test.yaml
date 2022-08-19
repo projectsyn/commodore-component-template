@@ -1,0 +1,36 @@
+name: Template tests
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test-rendered:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        add_lib:
+          - "n"
+          - "y"
+        add_pp:
+          - "n"
+          - "y"
+        add_golden:
+          - "n"
+          - "y"
+        add_matrix:
+          - "n"
+          - "y"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - uses: Gr1N/setup-poetry@v7
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      - run: poetry install
+      - name: Run lint
+        run: make test -e cruft_extra_content='{"slug":"test-component","name":"test-component","add_lib":"${{matrix.add_lib}}","add_pp":"${{matrix.add_pp}}","add_golden":"${{matrix.add_golden}}","add_matrix":"${{matrix.add_matrix}}"}'

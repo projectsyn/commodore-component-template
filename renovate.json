@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "config:base",
+    ":disableDependencyDashboard"
+  ],
+  "poetry": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  }
+}
