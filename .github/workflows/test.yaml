@@ -34,3 +34,8 @@ jobs:
       - run: poetry install
       - name: Run lint
         run: make test -e cruft_extra_content='{"slug":"test-component","name":"test-component","add_lib":"${{matrix.add_lib}}","add_pp":"${{matrix.add_pp}}","add_golden":"${{matrix.add_golden}}","add_matrix":"${{matrix.add_matrix}}"}'
+      - name: Run golden-diff
+        if: ${{ matrix.add_golden == 'y' }}
+        run: |
+          cd test-component
+          make golden-diff -e git_volume=
