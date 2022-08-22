@@ -39,3 +39,36 @@ jobs:
         run: |
           cd test-component
           make golden-diff -e git_volume=
+  test-rendered-test-cases:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        add_golden:
+          - "n"
+          - "y"
+        test_cases:
+          - "defaults"
+          - "defaults foo"
+          - "foo bar"
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - uses: Gr1N/setup-poetry@v7
+    - uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry/virtualenvs
+        key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+    - run: poetry install
+    - name: Run lints
+      run: |
+        make render -e cruft_extra_content='{"slug":"test-component","name":"test-component","add_golden":"${{matrix.add_golden}}","test_cases":"${{matrix.test_cases}}"}'
+        for t in ${{matrix.test_cases}}; do
+          test -f test-component/tests/${t}.yml
+        done
+    - name: Run golden-diff-all
+      if: ${{ matrix.add_golden == 'y' }}
+      run: |
+        cd test-component
+        make -j1 golden-diff-all -e git_volume=

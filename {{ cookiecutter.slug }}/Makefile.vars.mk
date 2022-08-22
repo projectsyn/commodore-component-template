@@ -1,3 +1,4 @@
+{%- set test_cases = cookiecutter.test_cases.split(" ") -%}
 # The component name is hard-coded from the template
 COMPONENT_NAME ?= {{ cookiecutter.slug }}
 
@@ -53,7 +54,7 @@ KUBENT_IMAGE    ?= docker.io/projectsyn/kubent:latest
 KUBENT_DOCKER   ?= $(DOCKER_CMD) $(DOCKER_ARGS) $(root_volume) --entrypoint=/app/kubent $(KUBENT_IMAGE)
 {%- endif %}
 
-instance ?= defaults
+instance ?= {{ test_cases[0] }}
 {%- if cookiecutter.add_matrix == "y" and cookiecutter.add_golden == "y" %}
-test_instances = tests/defaults.yml
+test_instances ={% for instance in test_cases %} tests/{{instance}}.yml{% endfor %}
 {%- endif %}
