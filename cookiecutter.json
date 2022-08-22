@@ -3,6 +3,8 @@
   "slug": "the-component",
   "parameter_key": "{{ cookiecutter.slug.replace('-', '_') }}",
 
+  "test_cases": "defaults",
+
   "add_lib": "n",
   "add_pp": "n",
   "add_golden": "y",
