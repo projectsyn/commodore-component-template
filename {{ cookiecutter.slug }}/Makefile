@@ -54,7 +54,7 @@ docs-serve: ## Preview the documentation
 .PHONY: test
 test: commodore_args += -f tests/$(instance).yml
 test: .compile ## Compile the component
-{%- if cookiecutter.add_go_unit %}
+{%- if cookiecutter.add_go_unit == "y" %}
 	@echo
 	@echo
 	@cd tests && go test -count 1 ./...
