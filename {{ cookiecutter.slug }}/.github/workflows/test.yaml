@@ -46,6 +46,19 @@ jobs:
         with:
           path: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
       - name: Compile component
+{%-  if cookiecutter.add_go_unit == "y" %}
+      - name: Determine Go version from go.mod
+        run: echo "GO_VERSION=$(grep "go 1." tests/go.mod | cut -d " " -f 2)" >> $GITHUB_ENV
+      - uses: actions/setup-go@v3
+        with:
+          go-version: {% raw %}${{ env.GO_VERSION }}{% endraw %}
+      - uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: {% raw %}${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}{% endraw %}
+          restore-keys: |
+            {% raw %}${{ runner.os }}-go-{% endraw %}
+{%- endif %}
 {%-  if cookiecutter.add_matrix == "y" %}
         run: make test -e instance={% raw %}${{ matrix.instance }}{% endraw %}
 {%- else %}
