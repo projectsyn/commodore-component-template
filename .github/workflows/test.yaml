@@ -21,6 +21,9 @@ jobs:
         add_matrix:
           - "n"
           - "y"
+        add_go_unit:
+          - "n"
+          - "y"
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -33,7 +36,7 @@ jobs:
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - run: poetry install
       - name: Run lint
-        run: make test -e cruft_extra_content='{"slug":"test-component","name":"test-component","add_lib":"${{matrix.add_lib}}","add_pp":"${{matrix.add_pp}}","add_golden":"${{matrix.add_golden}}","add_matrix":"${{matrix.add_matrix}}"}'
+        run: make test -e cruft_extra_content='{"slug":"test-component","name":"test-component","add_lib":"${{matrix.add_lib}}","add_pp":"${{matrix.add_pp}}","add_golden":"${{matrix.add_golden}}","add_matrix":"${{matrix.add_matrix}}","add_go_unit":"${{matrix.add_go_unit}}"}'
       - name: Run golden-diff
         if: ${{ matrix.add_golden == 'y' }}
         run: |

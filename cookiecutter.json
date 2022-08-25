@@ -9,6 +9,7 @@
   "add_pp": "n",
   "add_golden": "y",
   "add_matrix": "y",
+  "add_go_unit": "n",
 
   "copyright_holder": "VSHN AG <info@vshn.ch>",
   "copyright_year": "1950",
