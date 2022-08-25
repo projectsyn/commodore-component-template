@@ -4,7 +4,6 @@
 ## Checklist
 
 - [ ] PR contains a single logical change (to build a better changelog).
-- [ ] Update the documentation.
 - [ ] Categorize the PR by setting a good title and adding one of the labels:
       `bug`, `enhancement`, `documentation`, `change`, `breaking`, `dependency`
       as they show up in the changelog.
