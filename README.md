@@ -6,3 +6,8 @@ For documentation on Project Syn and this component, see https://syn.tools.
 ## Onboarding a component
 
 See https://syn.tools/syn/how-tos/prepare_for_component_sync.html
+
+## Triggering a sync
+
+* Push or merge to `main`
+* Via workflow dispatch (https://github.com/projectsyn/commodore-component-template/actions/workflows/sync.yaml)
