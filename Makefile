@@ -11,3 +11,7 @@ test: render
 .PHONY: clean
 clean:
 	rm -rf ./test-component
+
+.PHONY: sync\:noop
+sync\:noop:
+	./run-sync.sh --dry-run components.yaml
