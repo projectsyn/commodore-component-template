@@ -1,3 +1,4 @@
+import os
 import shutil
 
 from pathlib import Path
@@ -33,3 +34,6 @@ for case in test_cases.split(" "):
 
 if not add_golden:
     shutil.rmtree("tests/golden")
+
+if Path(".sync.yml").is_file():
+    os.unlink(Path(".sync.yml"))
