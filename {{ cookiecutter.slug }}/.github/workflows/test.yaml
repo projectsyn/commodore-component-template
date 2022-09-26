@@ -45,7 +45,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
-      - name: Compile component
 {%- if cookiecutter.add_go_unit == "y" %}
       - name: Determine Go version from go.mod
         run: echo "GO_VERSION=$(grep "go 1." tests/go.mod | cut -d " " -f 2)" >> $GITHUB_ENV
@@ -59,6 +58,7 @@ jobs:
           restore-keys: |
             {% raw %}${{ runner.os }}-go-{% endraw %}
 {%- endif %}
+      - name: Compile component
 {%-  if cookiecutter.add_matrix == "y" %}
         run: make test -e instance={% raw %}${{ matrix.instance }}{% endraw %}
 {%- else %}
