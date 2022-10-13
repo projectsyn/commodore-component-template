@@ -40,6 +40,7 @@
 - projectsyn/component-thanos
 - projectsyn/component-vault
 - projectsyn/component-vcluster
+- projectsyn/component-vertical-pod-autoscaler
 - appuio/component-appuio-cloud
 - appuio/component-appuio-cloud-reporting
 - appuio/component-cloud-portal
