@@ -6,7 +6,6 @@
 - projectsyn/component-cert-manager
 - projectsyn/component-cert-exporter
 - projectsyn/component-cilium
-- projectsyn/component-cluster-autoscaler
 - projectsyn/component-cluster-backup
 - projectsyn/component-coredns
 - projectsyn/component-crossplane
