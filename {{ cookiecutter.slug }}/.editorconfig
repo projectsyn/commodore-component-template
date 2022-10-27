@@ -24,6 +24,7 @@ insert_final_newline = false
 
 [Makefile]
 indent_style = tab
+{%- if cookiecutter.add_golden == "y" %}
 
 ; Ignore generated files
 [tests/golden/**]
@@ -31,3 +32,4 @@ indent_style = unset
 indent_size = unset
 insert_final_newline = unset
 trim_trailing_whitespace = unset
+{%- endif %}
