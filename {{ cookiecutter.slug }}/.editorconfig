@@ -26,10 +26,10 @@ insert_final_newline = false
 indent_style = tab
 {%- if cookiecutter.add_golden == "y" %}
 
-; Ignore generated files
+; Ignore golden test outputs
 [tests/golden/**]
-indent_style = unset
 indent_size = unset
+indent_style = unset
 insert_final_newline = unset
 trim_trailing_whitespace = unset
 {%- endif %}
