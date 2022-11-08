@@ -1,7 +1,12 @@
 name: Sync
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      filter:
+        description: 'Filter sync for a specific repository (exact name or regex)'
+        required: false
+        default: ''
   push:
     branches:
       - main
@@ -14,7 +19,7 @@ jobs:
   sync:
     uses: ./.github/workflows/sync_base.yaml
     with:
-      sync_args: ''
+      sync_args: '--filter "${{github.event.inputs.filter}}"'
     secrets:
       gh_token: ${{ secrets.COMMODORE_GITHUB_TOKEN }}
       ssh_key: ${{ secrets.SSH_PRIVATE_KEY }}

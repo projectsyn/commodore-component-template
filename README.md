@@ -11,3 +11,4 @@ See https://syn.tools/syn/how-tos/prepare_for_component_sync.html
 
 * Push or merge to `main`
 * Via workflow dispatch (https://github.com/projectsyn/commodore-component-template/actions/workflows/sync.yaml)
+You can provide a regex to only sync selected components via workflow dispatch.
