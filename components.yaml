@@ -49,6 +49,7 @@
 - appuio/component-openshift-prometheus-proxy
 - appuio/component-openshift4-api
 - appuio/component-openshift4-authentication
+- appuio/component-openshift4-config
 - appuio/component-openshift4-console
 - appuio/component-openshift4-ingress
 - appuio/component-openshift4-local-storage
