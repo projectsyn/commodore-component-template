@@ -25,6 +25,7 @@
 - projectsyn/component-minio
 - projectsyn/component-networkpolicy
 - projectsyn/component-nfs-subdir-external-provisioner
+- projectsyn/component-patch-operator
 - projectsyn/component-podsecuritypolicy
 - projectsyn/component-prometheus
 - projectsyn/component-prometheus-pushgateway
