@@ -31,7 +31,6 @@
 - projectsyn/component-prometheus-pushgateway
 - projectsyn/component-rancher-monitoring
 - projectsyn/component-rbac
-- projectsyn/component-resource-locker
 - projectsyn/component-rook-ceph
 - projectsyn/component-secret-generator
 - projectsyn/component-steward
