@@ -2,6 +2,7 @@
 - projectsyn/component-adhoc-configurations
 - projectsyn/component-appcat-service-postgresql
 - projectsyn/component-argocd
+- projectsyn/component-aws-cloudwatch-metrics
 - projectsyn/component-backup-k8up
 - projectsyn/component-cert-manager
 - projectsyn/component-cert-exporter
