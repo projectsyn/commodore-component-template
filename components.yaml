@@ -16,6 +16,8 @@
 - projectsyn/component-eventrouter
 - projectsyn/component-floodgate
 - projectsyn/component-fluentbit
+- projectsyn/component-fluentd-forwarder
+- projectsyn/component-gitlab-runner
 - projectsyn/component-grafana-helm
 - projectsyn/component-ingress-nginx
 - projectsyn/component-keycloak
