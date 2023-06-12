@@ -65,7 +65,6 @@
 - appuio/component-openshift4-registry
 - appuio/component-openshift4-s3-forwarder
 - appuio/component-openshift4-scheduling
-- appuio/component-openshift4-service-mesh
 - appuio/component-openshift4-slos
 - appuio/component-openshift4-splunk-forwarder
 - appuio/component-openshift4-version
