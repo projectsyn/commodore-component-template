@@ -14,6 +14,7 @@
 - projectsyn/component-csi-driver-smb
 - projectsyn/component-espejo
 - projectsyn/component-eventrouter
+- projectsyn/component-floodgate
 - projectsyn/component-fluentbit
 - projectsyn/component-grafana-helm
 - projectsyn/component-ingress-nginx
@@ -23,6 +24,7 @@
 - projectsyn/component-maxscale
 - projectsyn/component-metallb
 - projectsyn/component-metrics-server
+- projectsyn/component-mimir
 - projectsyn/component-minio
 - projectsyn/component-networkpolicy
 - projectsyn/component-nfs-subdir-external-provisioner
@@ -41,6 +43,7 @@
 - projectsyn/component-vault
 - projectsyn/component-vcluster
 - projectsyn/component-vertical-pod-autoscaler
+- projectsyn/component-xelon-csi
 - appuio/component-appuio-cloud
 - appuio/component-appuio-cloud-reporting
 - appuio/component-cloud-portal
@@ -55,11 +58,16 @@
 - appuio/component-openshift4-local-storage
 - appuio/component-openshift4-logging
 - appuio/component-openshift4-monitoring
+- appuio/component-openshift4-networking
 - appuio/component-openshift4-nodes
 - appuio/component-openshift4-operators
+- appuio/component-openshift4-proxy
 - appuio/component-openshift4-registry
+- appuio/component-openshift4-s3-forwarder
 - appuio/component-openshift4-scheduling
+- appuio/component-openshift4-service-mesh
 - appuio/component-openshift4-slos
+- appuio/component-openshift4-splunk-forwarder
 - appuio/component-openshift4-version
 - appuio/component-openshift-upgrade-controller
 - vshn/component-appcat
