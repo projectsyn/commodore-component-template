@@ -61,4 +61,5 @@
 - appuio/component-openshift4-scheduling
 - appuio/component-openshift4-slos
 - appuio/component-openshift4-version
+- appuio/component-openshift-upgrade-controller
 - vshn/component-appcat
