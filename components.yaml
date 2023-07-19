@@ -20,6 +20,7 @@
 - projectsyn/component-gitlab-runner
 - projectsyn/component-grafana-helm
 - projectsyn/component-ingress-nginx
+- projectsyn/component-json-exporter
 - projectsyn/component-keycloak
 - projectsyn/component-kyverno
 - projectsyn/component-lieutenant
