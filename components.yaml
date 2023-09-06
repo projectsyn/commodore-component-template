@@ -4,6 +4,7 @@
 - projectsyn/component-argocd
 - projectsyn/component-aws-cloudwatch-metrics
 - projectsyn/component-backup-k8up
+- projectsyn/component-blackbox-exporter
 - projectsyn/component-cert-exporter
 - projectsyn/component-cert-manager
 - projectsyn/component-cilium
@@ -13,6 +14,7 @@
 - projectsyn/component-csi-cloudscale
 - projectsyn/component-csi-driver-smb
 - projectsyn/component-espejo
+- projectsyn/component-etcd
 - projectsyn/component-eventrouter
 - projectsyn/component-floodgate
 - projectsyn/component-fluentbit
@@ -33,16 +35,21 @@
 - projectsyn/component-nfs-subdir-external-provisioner
 - projectsyn/component-patch-operator
 - projectsyn/component-podsecuritypolicy
+- projectsyn/component-prom-label-proxy
 - projectsyn/component-prometheus
 - projectsyn/component-prometheus-pushgateway
 - projectsyn/component-rancher-monitoring
 - projectsyn/component-rbac
+- projectsyn/component-registry-cache
 - projectsyn/component-rook-ceph
 - projectsyn/component-secret-generator
+- projectsyn/component-secrets
 - projectsyn/component-steward
+- projectsyn/component-storage-local-static
 - projectsyn/component-storageclass
 - projectsyn/component-system-upgrade-controller
 - projectsyn/component-thanos
+- projectsyn/component-topolvm
 - projectsyn/component-vault
 - projectsyn/component-vcluster
 - projectsyn/component-vertical-pod-autoscaler
