@@ -4,6 +4,9 @@
     ":gitSignOff",
     ":disableDependencyDashboard"
   ],
+  "ignorePaths": [
+    ".github/**"
+  ],
 {%- if cookiecutter.add_golden == "y" %}
   "postUpgradeTasks": {
     "commands": [
