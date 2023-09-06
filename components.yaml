@@ -65,6 +65,7 @@
 - appuio/component-openshift4-config
 - appuio/component-openshift4-console
 - appuio/component-openshift4-ingress
+- appuio/component-openshift4-keepalived
 - appuio/component-openshift4-local-storage
 - appuio/component-openshift4-logging
 - appuio/component-openshift4-monitoring
@@ -73,6 +74,7 @@
 - appuio/component-openshift4-operators
 - appuio/component-openshift4-proxy
 - appuio/component-openshift4-registry
+- appuio/component-openshift4-s3-forwarder
 - appuio/component-openshift4-scheduling
 - appuio/component-openshift4-slos
 - appuio/component-openshift4-splunk-forwarder
