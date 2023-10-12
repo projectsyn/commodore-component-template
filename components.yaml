@@ -58,9 +58,9 @@
 - appuio/component-appuio-cloud-reporting
 - appuio/component-cloud-portal
 - appuio/component-control-api
-- appuio/component-egress-cidr-operator
 - appuio/component-group-sync-operator
 - appuio/component-keycloak-attribute-sync-controller
+- appuio/component-machineset-egress-cidr-operator
 - appuio/component-openshift4-api
 - appuio/component-openshift4-authentication
 - appuio/component-openshift4-config
