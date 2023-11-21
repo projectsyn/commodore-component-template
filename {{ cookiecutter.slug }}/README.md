@@ -11,7 +11,7 @@ The rendered documentation for this component is available on the [Commodore Com
 
 Documentation for this component is written using [Asciidoc][asciidoc] and [Antora][antora].
 It can be found in the [`docs`](docs) folder.
-The [Divio documentation structure](https://documentation.divio.com/) organizes its content.
+We use the [Divio documentation structure](https://documentation.divio.com/) to organize our documentation.
 
 Run the `make docs-serve` command in the root of the project, and then browse to http://localhost:2020 to see a preview of the current state of the documentation.
 
