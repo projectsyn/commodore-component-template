@@ -28,10 +28,15 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
-      "matchCurrentVersion": ">=1.0.0",
+      "matchCurrentVersion": "!/^v?0\\./",{# negative match: do not match versions that match regex `^v?0\.` #}
       "automerge": true,
-      {# We can't use Platform Automerge because they are configured manually, so we can't be sure the "require status checks" option is always enabled, and without that, platformAutomerge does not wait for tests to pass. #}
-      "platformAutomerge": false
+      {# We can't use Platform Automerge because the repositories are configured manually, so we can't be sure the "require status checks" option is always enabled, and without that, platformAutomerge does not wait for tests to pass. #}
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge"
+      ]
     }
+    {# re: SYN-785 - Later rules take precedence, so add more specific package rules below. #}
   ]
 }
