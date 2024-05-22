@@ -24,5 +24,14 @@
   "labels": [
     "dependency"
   ],
-  "separateMinorPatch": true
+  "separateMinorPatch": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "matchCurrentVersion": ">=1.0.0",
+      "automerge": true,
+      {# We can't use Platform Automerge because they are configured manually, so we can't be sure the "require status checks" option is always enabled, and without that, platformAutomerge does not wait for tests to pass. #}
+      "platformAutomerge": false
+    }
+  ]
 }
