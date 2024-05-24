@@ -24,5 +24,23 @@
   "labels": [
     "dependency"
   ],
-  "separateMinorPatch": true
+  "separateMinorPatch": true,
+  "packageRules": [
+    {% if cookiecutter.automerge_patch == "y" %}
+    {
+      "matchUpdateTypes": ["patch"],
+      {% if cookiecutter.automerge_patch_v0 != "y" %}
+      "matchCurrentVersion": "!/^v?0\\./",{# negative match: do not match versions that match regex `^v?0\.` #}
+      {% endif %}
+      "automerge": true,
+      {# We can't use Platform Automerge because the repositories are configured manually, so we can't be sure the "require status checks" option is always enabled, and without that, platformAutomerge does not wait for tests to pass. #}
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge"
+      ]
+    }
+    {% endif %}
+    {# re: SYN-785 - Later rules take precedence, so add more specific package rules below. #}
+  ]
 }
