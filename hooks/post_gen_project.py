@@ -12,6 +12,8 @@ add_matrix = "{{ cookiecutter.add_matrix }}" == "y"
 automerge_patch = "{{ cookiecutter.automerge_patch }}" == "y"
 automerge_patch_v0 = "{{ cookiecutter.automerge_patch_v0 }}" == "y"
 
+automerge_patch_regexp_blocklist = "{{ cookiecutter.automerge_patch_regexp_blocklist }}"
+
 if not create_lib:
     shutil.rmtree("lib")
 
@@ -87,6 +89,13 @@ if automerge_patch:
     if automerge_patch_v0:
         # remove match current version if we want v0.x patch automerge
         del patch_rule["matchCurrentVersion"]
+
+    # Set excludePackagePatterns to the provided list of package patterns for which patch PRs
+    # shouldn't be automerged. Only set the field if the provided list isn't empty.
+    if len(automerge_patch_regexp_blocklist) > 0:
+        # NOTE: We expect that the provided pattern list is a string with patterns separated by ;
+        patterns = automerge_patch_regexp_blocklist.split(";")
+        patch_rule["excludePackagePatterns"] = patterns
 
     renovatejson["packageRules"].append(patch_rule)
 
