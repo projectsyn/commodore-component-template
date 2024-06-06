@@ -1,5 +1,6 @@
 - projectsyn/component-acme-dns
 - projectsyn/component-adhoc-configurations
+- projectsyn/component-alerts-exporter
 - projectsyn/component-appcat-service-postgresql
 - projectsyn/component-argocd
 - projectsyn/component-aws-cloudwatch-metrics
@@ -8,6 +9,7 @@
 - projectsyn/component-cert-exporter
 - projectsyn/component-cert-manager
 - projectsyn/component-cilium
+- projectsyn/component-cloudscale-cloud-controller-manager
 - projectsyn/component-cluster-backup
 - projectsyn/component-coredns
 - projectsyn/component-crossplane
@@ -26,6 +28,7 @@
 - projectsyn/component-keycloak
 - projectsyn/component-kyverno
 - projectsyn/component-lieutenant
+- projectsyn/component-lieutenant-keycloak-idp-controller
 - projectsyn/component-maxscale
 - projectsyn/component-metallb
 - projectsyn/component-metrics-server
@@ -44,6 +47,7 @@
 - projectsyn/component-rook-ceph
 - projectsyn/component-secret-generator
 - projectsyn/component-secrets
+- projectsyn/component-sigstore-policy-controller
 - projectsyn/component-steward
 - projectsyn/component-storage-local-static
 - projectsyn/component-storageclass
@@ -56,8 +60,10 @@
 - projectsyn/component-xelon-csi
 - appuio/component-appuio-cloud
 - appuio/component-appuio-cloud-reporting
+- appuio/component-appuio-reporting
 - appuio/component-cloud-portal
 - appuio/component-control-api
+- appuio/component-emergency-credentials-controller
 - appuio/component-group-sync-operator
 - appuio/component-keycloak-attribute-sync-controller
 - appuio/component-machineset-egress-cidr-operator
@@ -65,6 +71,7 @@
 - appuio/component-openshift4-authentication
 - appuio/component-openshift4-config
 - appuio/component-openshift4-console
+- appuio/component-openshift4-dns
 - appuio/component-openshift4-ingress
 - appuio/component-openshift4-keepalived
 - appuio/component-openshift4-local-storage
