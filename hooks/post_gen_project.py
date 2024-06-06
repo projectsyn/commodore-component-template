@@ -16,6 +16,7 @@ automerge_patch_regexp_blocklist = "{{ cookiecutter.automerge_patch_regexp_block
 automerge_patch_v0_regexp_allowlist = (
     "{{ cookiecutter.automerge_patch_v0_regexp_allowlist }}"
 )
+automerge_minor_regexp_allowlist = "{{ cookiecutter.automerge_minor_regexp_allowlist }}"
 
 if not create_lib:
     shutil.rmtree("lib")
@@ -129,6 +130,15 @@ if not automerge_patch_v0 and len(automerge_patch_v0_regexp_allowlist) > 0:
     patch_v0_rule["matchPackagePatterns"] = patterns
 
     renovatejson["packageRules"].append(patch_v0_rule)
+
+if len(automerge_minor_regexp_allowlist) > 0:
+    # NOTE: We expect that the provided pattern list is a string with patterns separated by ;
+    patterns = automerge_minor_regexp_allowlist.split(";")
+    minor_rule = rule_defaults(["minor"])
+    # Don't exclude dependencies whose current version is v0.x from minor automerge
+    del minor_rule["matchCurrentVersion"]
+    minor_rule["matchPackagePatterns"] = patterns
+    renovatejson["packageRules"].append(minor_rule)
 
 # NOTE: Later rules in `packageRules` take precedence
 
