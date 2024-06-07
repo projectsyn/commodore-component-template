@@ -12,6 +12,11 @@ add_matrix = "{{ cookiecutter.add_matrix }}" == "y"
 automerge_patch = "{{ cookiecutter.automerge_patch }}" == "y"
 automerge_patch_v0 = "{{ cookiecutter.automerge_patch_v0 }}" == "y"
 
+automerge_patch_regexp_blocklist = "{{ cookiecutter.automerge_patch_regexp_blocklist }}"
+automerge_patch_v0_regexp_allowlist = (
+    "{{ cookiecutter.automerge_patch_v0_regexp_allowlist }}"
+)
+
 if not create_lib:
     shutil.rmtree("lib")
 
@@ -69,10 +74,14 @@ if add_golden:
 # We always add an empty package rules list
 renovatejson["packageRules"] = []
 
-if automerge_patch:
-    # automerge patch PRs
-    patch_rule = {
-        "matchUpdateTypes": ["patch"],
+
+def rule_defaults(updateTypes, extraLabels=[]):
+    """Returns a dict containing a base package rule configuration for automerging.
+
+    By default automerging is disabled for dependencies whose current version matches `^v?0\.`
+    """
+    return {
+        "matchUpdateTypes": updateTypes,
         # negative match: do not match versions that match regex `^v?0\.`
         "matchCurrentVersion": "!/^v?0\\./",
         "automerge": True,
@@ -82,13 +91,44 @@ if automerge_patch:
         "platformAutomerge": False,
         # NOTE: We need to add all the labels we want here, renovate doesn't inherit globally
         # specified labels for package rules
-        "labels": ["dependency", "automerge"],
+        "labels": ["dependency", "automerge"] + extraLabels,
     }
+
+
+# automerge patch PRs if `automerge_patch` is True
+if automerge_patch:
+    patch_rule = rule_defaults(["patch"])
     if automerge_patch_v0:
-        # remove match current version if we want v0.x patch automerge
+        # If automerging patch updates for v0.x dependencies is enabled, remove field
+        # `matchCurrentVersion`
         del patch_rule["matchCurrentVersion"]
 
+    # Set excludePackagePatterns to the provided list of package patterns for which patch PRs
+    # shouldn't be automerged. Only set the field if the provided list isn't empty.
+    if len(automerge_patch_regexp_blocklist) > 0:
+        # NOTE: We expect that the provided pattern list is a string with patterns separated by ;
+        patterns = automerge_patch_regexp_blocklist.split(";")
+        patch_rule["excludePackagePatterns"] = patterns
+
     renovatejson["packageRules"].append(patch_rule)
+
+# If global automerging of patch updates for v0.x dependencies is disabled, but automerging is
+# requested for some v0.x package patterns via `automerge_patch_v0_regexp_allowlist`, we generate an
+# additional package rule that enables automerge only for dependencies that are currently v0.x and
+# which match one of the patterns provided in `automerge_patch_v0_regexp_allowlist`.
+# This rule is not required and therefore not generated when `automerge_patch_v0` is enabled. If you
+# want to disable automerging for some v0.x patch level updates but automerge patch level updates
+# for v0.x dependencies by default, you can specify patterns for which patch level updates shouldn't
+# be automerged in cookiecutter argument `automerge_patch_regexp_blocklist`.
+if not automerge_patch_v0 and len(automerge_patch_v0_regexp_allowlist) > 0:
+    patterns = automerge_patch_v0_regexp_allowlist.split(";")
+
+    patch_v0_rule = rule_defaults(["patch"])
+    # only apply for packages whose current version matches `v?0\.`
+    patch_v0_rule["matchCurrentVersion"] = "/^v?0\\./"
+    patch_v0_rule["matchPackagePatterns"] = patterns
+
+    renovatejson["packageRules"].append(patch_v0_rule)
 
 # NOTE: Later rules in `packageRules` take precedence
 
