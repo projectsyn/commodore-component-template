@@ -74,10 +74,14 @@ if add_golden:
 # We always add an empty package rules list
 renovatejson["packageRules"] = []
 
-if automerge_patch:
-    # automerge patch PRs
-    patch_rule = {
-        "matchUpdateTypes": ["patch"],
+
+def rule_defaults(updateTypes, extraLabels=[]):
+    """Returns a dict containing a base package rule configuration for automerging.
+
+    By default automerging is disabled for dependencies whose current version matches `^v?0\.`
+    """
+    return {
+        "matchUpdateTypes": updateTypes,
         # negative match: do not match versions that match regex `^v?0\.`
         "matchCurrentVersion": "!/^v?0\\./",
         "automerge": True,
@@ -87,10 +91,16 @@ if automerge_patch:
         "platformAutomerge": False,
         # NOTE: We need to add all the labels we want here, renovate doesn't inherit globally
         # specified labels for package rules
-        "labels": ["dependency", "automerge"],
+        "labels": ["dependency", "automerge"] + extraLabels,
     }
+
+
+# automerge patch PRs if `automerge_patch` is True
+if automerge_patch:
+    patch_rule = rule_defaults(["patch"])
     if automerge_patch_v0:
-        # remove match current version if we want v0.x patch automerge
+        # If automerging patch updates for v0.x dependencies is enabled, remove field
+        # `matchCurrentVersion`
         del patch_rule["matchCurrentVersion"]
 
     # Set excludePackagePatterns to the provided list of package patterns for which patch PRs
@@ -112,20 +122,12 @@ if automerge_patch:
 # be automerged in cookiecutter argument `automerge_patch_regexp_blocklist`.
 if not automerge_patch_v0 and len(automerge_patch_v0_regexp_allowlist) > 0:
     patterns = automerge_patch_v0_regexp_allowlist.split(";")
-    patch_v0_rule = {
-        "matchUpdateTypes": ["patch"],
-        # only apply for packages whose current version matches `v?0\.`
-        "matchCurrentVersion": "/^v?0\\./",
-        "automerge": True,
-        # NOTE: We can't use Platform Automerge because the repositories are configured manually,
-        # so we can't be sure the "require status checks" option is always enabled, and without
-        # that, platformAutomerge does not wait for tests to pass.
-        "platformAutomerge": False,
-        # NOTE: We need to add all the labels we want here, renovate doesn't inherit globally
-        # specified labels for package rules
-        "labels": ["dependency", "automerge"],
-        "matchPackagePatterns": patterns,
-    }
+
+    patch_v0_rule = rule_defaults(["patch"])
+    # only apply for packages whose current version matches `v?0\.`
+    patch_v0_rule["matchCurrentVersion"] = "/^v?0\\./"
+    patch_v0_rule["matchPackagePatterns"] = patterns
+
     renovatejson["packageRules"].append(patch_v0_rule)
 
 # NOTE: Later rules in `packageRules` take precedence
