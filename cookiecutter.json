@@ -15,6 +15,7 @@
   "automerge_patch_v0": "n",
 
   "automerge_patch_regexp_blocklist": "",
+  "automerge_patch_v0_regexp_allowlist": "",
 
   "copyright_holder": "VSHN AG <info@vshn.ch>",
   "copyright_year": "1950",
