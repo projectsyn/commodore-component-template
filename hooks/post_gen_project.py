@@ -18,6 +18,8 @@ automerge_patch_v0_regexp_allowlist = (
 )
 automerge_minor_regexp_allowlist = "{{ cookiecutter.automerge_minor_regexp_allowlist }}"
 
+auto_release = "{{ cookiecutter.auto_release }}" == "y"
+
 if not create_lib:
     shutil.rmtree("lib")
 
@@ -98,7 +100,7 @@ def rule_defaults(updateTypes, extraLabels=[]):
 
 # automerge patch PRs if `automerge_patch` is True
 if automerge_patch:
-    patch_rule = rule_defaults(["patch"])
+    patch_rule = rule_defaults(["patch"], ["bump:patch"])
     if automerge_patch_v0:
         # If automerging patch updates for v0.x dependencies is enabled, remove field
         # `matchCurrentVersion`
@@ -124,7 +126,7 @@ if automerge_patch:
 if not automerge_patch_v0 and len(automerge_patch_v0_regexp_allowlist) > 0:
     patterns = automerge_patch_v0_regexp_allowlist.split(";")
 
-    patch_v0_rule = rule_defaults(["patch"])
+    patch_v0_rule = rule_defaults(["patch"], ["bump:patch"])
     # only apply for packages whose current version matches `v?0\.`
     patch_v0_rule["matchCurrentVersion"] = "/^v?0\\./"
     patch_v0_rule["matchPackagePatterns"] = patterns
@@ -134,7 +136,7 @@ if not automerge_patch_v0 and len(automerge_patch_v0_regexp_allowlist) > 0:
 if len(automerge_minor_regexp_allowlist) > 0:
     # NOTE: We expect that the provided pattern list is a string with patterns separated by ;
     patterns = automerge_minor_regexp_allowlist.split(";")
-    minor_rule = rule_defaults(["minor"])
+    minor_rule = rule_defaults(["minor"], ["bump:minor"])
     # Don't exclude dependencies whose current version is v0.x from minor automerge
     del minor_rule["matchCurrentVersion"]
     minor_rule["matchPackagePatterns"] = patterns
@@ -148,3 +150,7 @@ with open("renovate.json", "w", encoding="utf-8") as f:
 
 if Path(".sync.yml").is_file():
     os.unlink(Path(".sync.yml"))
+
+# remove auto-release workflow if not enabled
+if not auto_release:
+    os.unlink(Path(".github/workflows/auto-release.yaml"))

@@ -18,6 +18,8 @@
   "automerge_patch_v0_regexp_allowlist": "",
   "automerge_minor_regexp_allowlist": "",
 
+  "auto_release": "y",
+
   "copyright_holder": "VSHN AG <info@vshn.ch>",
   "copyright_year": "1950",
 
