@@ -1,6 +1,5 @@
 - projectsyn/component-acme-dns
 - projectsyn/component-adhoc-configurations
-- projectsyn/component-alerts-exporter
 - projectsyn/component-appcat-service-postgresql
 - projectsyn/component-argocd
 - projectsyn/component-aws-cloudwatch-metrics
@@ -58,6 +57,7 @@
 - projectsyn/component-vcluster
 - projectsyn/component-vertical-pod-autoscaler
 - projectsyn/component-xelon-csi
+- appuio/component-alerts-exporter
 - appuio/component-appuio-cloud
 - appuio/component-appuio-cloud-reporting
 - appuio/component-appuio-reporting
