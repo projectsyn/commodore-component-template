@@ -100,7 +100,8 @@ def rule_defaults(updateTypes, extraLabels=[]):
 
 # automerge patch PRs if `automerge_patch` is True
 if automerge_patch:
-    patch_rule = rule_defaults(["patch"], ["bump:patch"])
+    # Automerge patch and digest updates if patch automerging is enabled
+    patch_rule = rule_defaults(["patch", "digest"], ["bump:patch"])
     if automerge_patch_v0:
         # If automerging patch updates for v0.x dependencies is enabled, remove field
         # `matchCurrentVersion`
