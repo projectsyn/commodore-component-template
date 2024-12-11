@@ -66,6 +66,7 @@
 - appuio/component-emergency-credentials-controller
 - appuio/component-group-sync-operator
 - appuio/component-keycloak-attribute-sync-controller
+- appuio/component-machine-api-provider-cloudscale
 - appuio/component-machineset-egress-cidr-operator
 - appuio/component-openshift4-api
 - appuio/component-openshift4-authentication
