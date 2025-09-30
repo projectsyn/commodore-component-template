@@ -24,7 +24,7 @@ jobs:
   editorconfig:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: snow-actions/eclint@v1.0.1
         with:
           args: 'check'
@@ -42,13 +42,13 @@ jobs:
       run:
         working-directory: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
 {%- if cookiecutter.add_go_unit == "y" %}
       - name: Determine Go version from go.mod
         run: echo "GO_VERSION=$(grep "go 1." tests/go.mod | cut -d " " -f 2)" >> $GITHUB_ENV
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version: {% raw %}${{ env.GO_VERSION }}{% endraw %}
       - uses: actions/cache@v4
@@ -79,7 +79,7 @@ jobs:
       run:
         working-directory: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
       - name: Golden diff
