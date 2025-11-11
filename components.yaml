@@ -98,6 +98,7 @@
 - appuio/component-openshift4-slos
 - appuio/component-openshift4-splunk-forwarder
 - appuio/component-openshift4-terraform
+- appuio/component-openshift-nmstate
 - appuio/component-openshift-upgrade-controller
 - vshn/component-appcat
 - vshn/component-rotating-bucket-backup
