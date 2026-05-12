@@ -22,18 +22,32 @@ for c in dependencies/*; do
   if [ "$n" != "" ]; then
     gh pr view --comments "$n"
     reviewed=$(gh pr view "$n" --json reviews -q '.reviews|length')
-    read -r -p 'Merge? ' choice
-    case "$choice" in
-      y|Y)
-        if [ "$reviewed" == "0" ]; then
-          gh pr review -a "$n"
-        fi
-        gh pr merge -m "$n"
-        ;;
-      *)
-        echo "Skipping $c"
-        ;;
-    esac
+    done=false
+    while ! $done; do
+      read -r -p 'What do you want to do? (View [d]iff [m]erge [s]kip [q]uit) ' choice
+      case "$choice" in
+        q|Q)
+          exit 0;
+          ;;
+        d|D)
+          gh pr diff "$n"
+          ;;
+        m|M)
+          if [ "$reviewed" == "0" ]; then
+            gh pr review -a "$n"
+          fi
+          gh pr merge -m "$n"
+          done=true
+          ;;
+        s|S)
+          echo "Skipping $c"
+          done=true
+          ;;
+        *)
+          echo "Unknown choice '$choice'"
+          ;;
+      esac
+    done
   fi
   cd ../..
 done
