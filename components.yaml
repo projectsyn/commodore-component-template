@@ -63,7 +63,7 @@
 - projectsyn/component-vertical-pod-autoscaler
 - projectsyn/component-xelon-csi
 - projectsyn/component-yawol-controller
-- appuio/component-airlock-microgateway
+- appuio/component-airlock-microgateway-operator
 - appuio/component-alerts-exporter
 - appuio/component-appuio-cloud
 - appuio/component-appuio-cloud-reporting
