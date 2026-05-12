@@ -11,6 +11,7 @@ jobs:
   test-rendered:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 10
       matrix:
         add_lib:
           - "n"
@@ -48,6 +49,7 @@ jobs:
   test-rendered-test-cases:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 10
       matrix:
         add_golden:
           - "n"
