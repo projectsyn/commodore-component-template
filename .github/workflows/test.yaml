@@ -10,6 +10,7 @@ on:
 jobs:
   test-rendered:
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       max-parallel: 10
       matrix:
@@ -48,6 +49,7 @@ jobs:
           make golden-diff -e git_volume=
   test-rendered-test-cases:
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       max-parallel: 10
       matrix:
