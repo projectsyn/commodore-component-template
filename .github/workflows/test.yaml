@@ -31,7 +31,7 @@ jobs:
           - "y"
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: 3.14
       - uses: Gr1N/setup-poetry@v9
@@ -62,7 +62,7 @@ jobs:
           - "foo bar"
     steps:
     - uses: actions/checkout@v6
-    - uses: actions/setup-python@v6
+    - uses: actions/setup-python@v7
       with:
         python-version: 3.14
     - uses: Gr1N/setup-poetry@v9
