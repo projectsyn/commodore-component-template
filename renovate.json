@@ -3,6 +3,17 @@
     "config:base",
     ":disableDependencyDashboard"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^\\{\\{ cookiecutter\\.slug \\}\\}/Makefile\\.vars\\.mk$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n[a-zA-Z0-9_]+ \\?= (?<currentValue>\\S+)"
+      ]
+    }
+  ],
   "poetry": {
     "enabled": true
   },

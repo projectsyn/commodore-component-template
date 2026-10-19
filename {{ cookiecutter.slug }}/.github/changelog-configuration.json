@@ -29,4 +29,4 @@
     ],
     "template": "${{CATEGORIZED_COUNT}} changes since ${{FROM_TAG}}\n\n${{CHANGELOG}}"
 }
-{% endraw %}
+{% endraw -%}
