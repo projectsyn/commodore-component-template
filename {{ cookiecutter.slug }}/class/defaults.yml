@@ -3,3 +3,6 @@ parameters:
     =_metadata:
       multi_tenant: true
     namespace: syn-{{ cookiecutter.slug }}
+    createNamespace: false
+    namespaceLabels: {}
+    namespaceAnnotations: {}
