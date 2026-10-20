@@ -36,11 +36,15 @@ lint_kubent: ## Check for deprecated Kubernetes API versions
 {%- endif %}
 
 .PHONY: format
-format: format_jsonnet ## All-in-one formatting
+format: format_jsonnet format_editorconfig ## All-in-one formatting
 
 .PHONY: format_jsonnet
 format_jsonnet: $(JSONNET_FILES) ## Format jsonnet files
 	$(JSONNET_DOCKER) $(JSONNETFMT_ARGS) --in-place -- $?
+
+.PHONY: format_editorconfig
+format_editorconfig: ## Fix EditorConfig issues
+	npx --yes eclint@$(ECLINT_VERSION) fix .
 
 .PHONY: docs-serve
 docs-serve: ## Preview the documentation
