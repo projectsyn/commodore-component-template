@@ -79,7 +79,7 @@ renovatejson["packageRules"] = []
 
 
 def rule_defaults(updateTypes, extraLabels=[]):
-    """Returns a dict containing a base package rule configuration for automerging.
+    r"""Returns a dict containing a base package rule configuration for automerging.
 
     By default automerging is disabled for dependencies whose current version matches `^v?0\.`
     """
