@@ -152,6 +152,10 @@ with open("renovate.json", "w", encoding="utf-8") as f:
 if Path(".sync.yml").is_file():
     os.unlink(Path(".sync.yml"))
 
+# NOTE(sg): Remove unused Antora playbook.yml from old components.
+if Path("playbook.yml").is_file():
+    os.unlink(Path("playbook.yml"))
+
 # remove auto-release workflow if not enabled
 if not auto_release:
     os.unlink(Path(".github/workflows/auto-release.yaml"))
