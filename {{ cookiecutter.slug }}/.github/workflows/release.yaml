@@ -6,6 +6,12 @@ on:
       - v*
   workflow_dispatch:
 
+permissions:
+  # create the GitHub release
+  contents: write
+  # build the changelog from merged PRs
+  pull-requests: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
