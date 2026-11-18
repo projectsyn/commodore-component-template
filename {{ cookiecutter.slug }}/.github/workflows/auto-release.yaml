@@ -7,6 +7,14 @@ on:
       - unlabeled
       - closed
 
+permissions:
+  # push the release tag
+  contents: write
+  # comment the planned version on the PR
+  pull-requests: write
+  # dispatch the Release workflow for the new tag
+  actions: write
+
 jobs:
   create-release-tag:
     runs-on: ubuntu-latest
