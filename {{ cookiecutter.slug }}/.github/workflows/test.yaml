@@ -17,13 +17,13 @@ jobs:
           - lint_yaml
           - lint_adoc
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run {% raw %}${{ matrix.command }}{% endraw %}
         run: make {% raw %}${{ matrix.command }}{% endraw %}
   editorconfig:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: snow-actions/eclint@v1.0.1
         with:
           args: 'check'
@@ -41,7 +41,7 @@ jobs:
       run:
         working-directory: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           path: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
 {%- if cookiecutter.add_go_unit == "y" %}
@@ -78,7 +78,7 @@ jobs:
       run:
         working-directory: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           path: {% raw %}${{ env.COMPONENT_NAME }}{% endraw %}
       - name: Golden diff
