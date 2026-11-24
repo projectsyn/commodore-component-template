@@ -26,6 +26,7 @@
 - projectsyn/component-fluentd-forwarder
 - projectsyn/component-gitlab-runner
 - projectsyn/component-grafana-helm
+- projectsyn/component-icap-virusscan
 - projectsyn/component-ingress-nginx
 - projectsyn/component-json-exporter
 - projectsyn/component-keycloak
@@ -62,6 +63,7 @@
 - projectsyn/component-vertical-pod-autoscaler
 - projectsyn/component-xelon-csi
 - projectsyn/component-yawol-controller
+- appuio/component-airlock-microgateway
 - appuio/component-airlock-microgateway-operator
 - appuio/component-alerts-exporter
 - appuio/component-appuio-cloud
@@ -94,6 +96,8 @@
 - appuio/component-openshift4-terraform
 - appuio/component-openshift-nmstate
 - appuio/component-openshift-upgrade-controller
+- appuio/component-solution-backup
+- appuio/component-solution-base-monitoring
 - vshn/component-appcat
 - vshn/component-helm-chart
 - vshn/component-rotating-bucket-backup
