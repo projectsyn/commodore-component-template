@@ -95,5 +95,6 @@
 - appuio/component-openshift-nmstate
 - appuio/component-openshift-upgrade-controller
 - vshn/component-appcat
+- vshn/component-helm-chart
 - vshn/component-rotating-bucket-backup
 - vshn/component-vshn-sli-reporting
