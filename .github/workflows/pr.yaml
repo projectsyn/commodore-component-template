@@ -2,6 +2,7 @@ name: Sync (dry-run)
 
 on:
   pull_request: {}
+  workflow_dispatch:
 
 jobs:
   sync_dry_run:
